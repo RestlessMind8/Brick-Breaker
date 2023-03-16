@@ -8,10 +8,12 @@ Game::Game()
     this->initText();
 }
 
+
 Game::~Game()
 {
     delete this->window;
 }
+
 
 void Game::render(){
     this->window->clear(sf::Color(0, 0, 0));
@@ -46,8 +48,11 @@ void Game::initVariables(){
     this->endGame = false;
     this->mouseHeld = false;
     this->clock = sf::Clock();
-    this->player = new Player(this->videoMode);
-    this->ball = new Ball(this->videoMode);
+    this->playerDimensions.x = 70.f;
+    this->playerDimensions.y = 8.f;
+    this->player = new Player(this->videoMode, this->playerDimensions);
+    this->ballRadius = 5.f;
+    this->ball = new Ball(this->videoMode, this->ballRadius);
 }
 
 
@@ -89,6 +94,7 @@ void Game::renderPlayer(sf::RenderTarget &target){
     target.draw(this->player->getShape());
 }
 
+
 void Game::renderBall(sf::RenderTarget &target){
     target.draw(this->ball->getShape());
 }
@@ -125,11 +131,57 @@ int Game::checkPlayerBounds(){
 }
 
 
-/*void Game::updateBallPosition(){
-    if(this->player->getShape()){
-        this->ball->setYDirection(-1);
+void Game::updateBallPosition(){
+    switch(ballCollider()){
+        case 1:
+            this->ball->setXDirection(-1);
+        break;
+        case 2:
+            this->ball->setXDirection(1);
+        break;
+        case 3:
+            this->ball->setYDirection(-1);
+        break;
+        case 4:
+            this->ball->setYDirection(1);
+        break;
+        case 5:
+            this->ball->setYDirection(-1);
+            this->ball->setXDirection(-1);
+        break;
+        case 6:
+            this->ball->setYDirection(-1);
+            this->ball->setXDirection(1);
+        break;
     }
-}*/
+    this->ball->move();
+}
+
+
+int Game::ballCollider(){
+    sf::Vector2f ballPosition = this->ball->getShape().getPosition();
+    sf::Vector2f playerPosition = this->player->getShape().getPosition();
+
+    if((ballPosition.x + ballRadius) > this->videoMode.width){
+        return 1;
+    }else if((ballPosition.x - ballRadius) < 0){
+        return 2;
+    }else if((ballPosition.y + ballRadius) > this->videoMode.height){
+        return 3;
+    }else if((ballPosition.y - ballRadius) < 0){
+        return 4;
+    }else if((ballPosition.y + ballRadius) > (playerPosition.y - playerDimensions.y)
+             && (ballPosition.y - ballRadius) < (playerPosition.y + playerDimensions.y)
+             && (ballPosition.x + ballRadius > (playerPosition.x - playerDimensions.x * 0.5))
+             && (ballPosition.x - ballRadius < (playerPosition.x))){
+        return 5;
+    }else if((ballPosition.y + ballRadius) > (playerPosition.y - playerDimensions.y)
+             && (ballPosition.y - ballRadius) < (playerPosition.y + playerDimensions.y)
+             && (ballPosition.x + ballRadius > (playerPosition.x))
+             && (ballPosition.x - ballRadius < (playerPosition.x + playerDimensions.x * 0.5))){
+        return 6;
+    }
+}
 
 
 

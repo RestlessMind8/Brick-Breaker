@@ -5,7 +5,7 @@
 class Player
 {
     public:
-        Player(sf::VideoMode videoMode);
+        Player(sf::VideoMode videoMode, sf::Vector2f dimensions);
         virtual ~Player();
 
     public:

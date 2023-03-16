@@ -28,6 +28,8 @@ class Game
         sf::Text text;
         Player *player;
         Ball *ball;
+        sf::Vector2f playerDimensions;
+        float ballRadius;
 
         //mouse positions
         sf::Vector2i mousePosWindow;
@@ -52,6 +54,7 @@ class Game
         void play();
         int checkPlayerBounds();
         void updateBallPosition();
+        int ballCollider();
 
 
 };

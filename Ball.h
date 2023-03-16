@@ -5,7 +5,7 @@
 class Ball
 {
     public:
-        Ball(sf::VideoMode videoMode);
+        Ball(sf::VideoMode videoMode, float radius);
         virtual ~Ball();
     public:
         sf::CircleShape getShape();

@@ -1,12 +1,12 @@
 #include "Ball.h"
 
-Ball::Ball(sf::VideoMode videoMode)
+Ball::Ball(sf::VideoMode videoMode, float radius)
 {
-    this->shape.setRadius(5);
+    this->shape.setRadius(radius);
     this->shape.setFillColor(sf::Color::Yellow);
     this->shape.setPosition(videoMode.width * 0.5, videoMode.height - 120);
     this->shape.setOrigin(5, 5);
-    this->xDirection = 0;
+    this->xDirection = 1;
     this->yDirection = 1;
     this->speed = 5;
 }

@@ -1,9 +1,9 @@
 #include "Player.h"
 
-Player::Player(sf::VideoMode videoMode)
+Player::Player(sf::VideoMode videoMode, sf::Vector2f dimensions)
 {
-    this->size.x = 70.f;
-    this->size.y = 8.f;
+    this->size.x = dimensions.x;
+    this->size.y = dimensions.y;;
     this->speed = 5;
     this->shape.setSize(this->size);
     this->shape.setFillColor(sf::Color::Cyan);
