@@ -15,6 +15,8 @@ Game::~Game()
 
 void Game::render(){
     this->window->clear(sf::Color(0, 0, 0));
+    this->renderPlayer(*this->window);
+    this->renderBall(*this->window);
     this->window->display();
 }
 
@@ -22,7 +24,8 @@ void Game::render(){
 void Game::update(){
     this->pollEvents();
     this->updateMousePosition();
-    //this->play();
+    this->updateBallPosition();
+    this->play();
 }
 
 
@@ -43,6 +46,8 @@ void Game::initVariables(){
     this->endGame = false;
     this->mouseHeld = false;
     this->clock = sf::Clock();
+    this->player = new Player(this->videoMode);
+    this->ball = new Ball(this->videoMode);
 }
 
 
@@ -78,3 +83,55 @@ void Game::initText(){
     this->text.setFont(this->font);
     this->text.setFillColor(sf::Color::Black);
 }
+
+
+void Game::renderPlayer(sf::RenderTarget &target){
+    target.draw(this->player->getShape());
+}
+
+void Game::renderBall(sf::RenderTarget &target){
+    target.draw(this->ball->getShape());
+}
+
+
+void Game::play(){
+    if(this->ev.type == sf::Event::KeyPressed){
+        switch(this->ev.key.code){
+            case sf::Keyboard::Right:
+                if(checkPlayerBounds() != 1){
+                    this->player->moveRight();
+                }
+                break;
+            case sf::Keyboard::Left:
+                if(checkPlayerBounds() != -1){
+                    this->player->moveLeft();
+                }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+
+int Game::checkPlayerBounds(){
+    sf::Vector2f playerPosition = this->player->getShape().getPosition();
+    int playerSize = this->player->getSize().x;
+    if((playerPosition.x + playerSize * 0.5) > this->videoMode.width)
+        return 1;
+    else if(((playerPosition.x - playerSize * 0.5) < 0))
+        return -1;
+    else return 0;
+}
+
+
+/*void Game::updateBallPosition(){
+    if(this->player->getShape()){
+        this->ball->setYDirection(-1);
+    }
+}*/
+
+
+
+
+

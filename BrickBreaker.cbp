@@ -44,8 +44,12 @@
 		<Linker>
 			<Add directory="C:/Program Files (x86)/CodeBlocks/SFML-2.5.1/lib" />
 		</Linker>
+		<Unit filename="Ball.cpp" />
+		<Unit filename="Ball.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
+		<Unit filename="Player.cpp" />
+		<Unit filename="Player.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

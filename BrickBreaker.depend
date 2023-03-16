@@ -1,10 +1,12 @@
 # depslib dependency file v1.0
-1678125493 source:c:\users\bruno\desktop\algoritmos\c++\brickbreaker\game.cpp
+1678672209 source:c:\users\bruno\desktop\algoritmos\c++\brickbreaker\game.cpp
 	"Game.h"
 
-1678125417 c:\users\bruno\desktop\algoritmos\c++\brickbreaker\game.h
+1678672753 c:\users\bruno\desktop\algoritmos\c++\brickbreaker\game.h
 	<SFML/Graphics.hpp>
 	<iostream>
+	"Player.h"
+	"Ball.h"
 
 1525812018 c:\program files (x86)\codeblocks\sfml-2.5.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -419,4 +421,16 @@
 	<iostream>
 	"Game.h"
 	<SFML/Graphics.hpp>
+
+1678666887 c:\users\bruno\desktop\algoritmos\c++\brickbreaker\player.h
+	<SFML/Graphics.hpp>
+
+1678666843 source:c:\users\bruno\desktop\algoritmos\c++\brickbreaker\player.cpp
+	"Player.h"
+
+1678672721 c:\users\bruno\desktop\algoritmos\c++\brickbreaker\ball.h
+	<SFML/Graphics.hpp>
+
+1678672905 source:c:\users\bruno\desktop\algoritmos\c++\brickbreaker\ball.cpp
+	"Ball.h"
 

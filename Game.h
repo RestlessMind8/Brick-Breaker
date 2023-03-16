@@ -2,6 +2,8 @@
 #define GAME_H
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Player.h"
+#include "Ball.h"
 
 
 class Game
@@ -24,6 +26,8 @@ class Game
         sf::Clock clock;
         sf::Font font;
         sf::Text text;
+        Player *player;
+        Ball *ball;
 
         //mouse positions
         sf::Vector2i mousePosWindow;
@@ -43,8 +47,25 @@ class Game
         void pollEvents();
         void updateMousePosition();
         void renderText();
+        void renderPlayer(sf::RenderTarget &target);
+        void renderBall(sf::RenderTarget &target);
+        void play();
+        int checkPlayerBounds();
+        void updateBallPosition();
 
 
 };
 
 #endif // GAME_H
+
+
+
+
+
+
+
+
+
+
+
+
