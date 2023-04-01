@@ -4,7 +4,10 @@
 #include <iostream>
 #include "Player.h"
 #include "Ball.h"
-
+#include <vector>
+#include "Block.h"
+#include <stdlib.h>
+#include <sstream>
 
 class Game
 {
@@ -30,6 +33,7 @@ class Game
         Ball *ball;
         sf::Vector2f playerDimensions;
         float ballRadius;
+        std::vector<Block> blocks;
 
         //mouse positions
         sf::Vector2i mousePosWindow;
@@ -40,22 +44,30 @@ class Game
         bool mouseHeld;
         bool started;
         float score;
+        int lives;
 
         //private functions
         void initVariables();
         void initWindow();
         void initFonts();
         void initText();
+        void newGame();
         void pollEvents();
         void updateMousePosition();
-        void renderText();
+        void updateText();
+        void renderText(sf::RenderTarget &target);
         void renderPlayer(sf::RenderTarget &target);
         void renderBall(sf::RenderTarget &target);
         void play();
         int checkPlayerBounds();
         void updateBallPosition();
         int ballCollider();
-
+        void setBlocks();
+        void renderBlocks(sf::RenderTarget &target);
+        int checkBlockCollision();
+        float clamp(float value, float minn, float maxx);
+        void playerDies();
+        void gameOver();
 
 };
 

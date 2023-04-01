@@ -46,6 +46,8 @@
 		</Linker>
 		<Unit filename="Ball.cpp" />
 		<Unit filename="Ball.h" />
+		<Unit filename="Block.cpp" />
+		<Unit filename="Block.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
 		<Unit filename="Player.cpp" />

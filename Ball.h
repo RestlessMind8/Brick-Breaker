@@ -12,12 +12,14 @@ class Ball
         void move();
         void setXDirection(int direction);
         void setYDirection(int direction);
+        sf::Vector2f getPosition();
+        sf::Vector2i getDirections();
 
     protected:
 
     private:
         sf::CircleShape shape;
-        int xDirection, yDirection;
+        sf::Vector2i directions;
         float speed;
 
 };
